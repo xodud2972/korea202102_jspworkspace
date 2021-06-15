@@ -1,4 +1,7 @@
 //목록 요청을 처리하는 서블릿
+// 서블릿이란 javaEE 기반의 서버에서 실행될 수 있는 클래스이다. 하지만 서블릿만으로는 개발시
+// 디자인 처리에 너무많은 리소스가 소모된다. 즉 효율적이지 못하다. 왜? 클라이언트에게 전달할 컨텐츠 문자열을
+// 문자열 처리하여 전송해야 하므로.. 즉 디자인에 취약하다.
 package servlet.board;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;
