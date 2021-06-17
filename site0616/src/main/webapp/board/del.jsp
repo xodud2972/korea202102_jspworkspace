@@ -3,7 +3,9 @@
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
+
 	Class.forName("oracle.jdbc.driver.OracleDriver");
+
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	
@@ -31,6 +33,9 @@
 	pstmt.close();
 	con.close();
 %>
+
+
+
 
 
 

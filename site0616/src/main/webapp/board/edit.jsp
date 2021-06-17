@@ -5,6 +5,7 @@
 <%
 	//이  jsp는 디자인이 필요없고, 단지 수정과 관련된 dB연동만 하면 된다
 	Class.forName("oracle.jdbc.driver.OracleDriver");
+
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	
@@ -44,6 +45,9 @@
 	if(pstmt!=null)pstmt.close();	
 	if(con!=null)con.close();
 %>
+
+
+
 
 
 

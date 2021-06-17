@@ -8,37 +8,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//ÇöÀç Å¬·¡½º´Â ±×³É Å¬·¡½ºÀÌ¹Ç·Î, À¥ÄÁÅ×ÀÌ³Ê¿¡¼­ ÇØ¼® ¹× ½ÇÇàµÇ±â À§ÇØ¼­´Â ¼­ºí¸´À¸·Î Á¤ÀÇÇØ¾ß ÇÑ´Ù
+//í˜„ì¬ í´ë˜ìŠ¤ëŠ” ê·¸ëƒ¥ í´ë˜ìŠ¤ì´ë¯€ë¡œ, ì›¹ì»¨í…Œì´ë„ˆì—ì„œ í•´ì„ ë° ì‹¤í–‰ë˜ê¸° ìœ„í•´ì„œëŠ” ì„œë¸”ë¦¿ìœ¼ë¡œ ì •ì˜í•´ì•¼ í•œë‹¤
 public class MyServlet extends HttpServlet{
-	//¾Æ·¡ÀÇ ¸Ş¼­µå´Â ¼­ºí¸´ÀÇ ÀÎ½ºÅÏ½º°¡ »ı¼ºµÇÀÚ ¸¶ÀÚ, À¥ÄÁÅ×ÀÌ³ÊÀÎ ÅèÄÏ¿¡ ÀÇÇØ ÃÊ±âÈ­ µÇ±â À§ÇÑ ¿ëµµµµ »ç¿ëµÈ´Ù 
-	//±×¸®°í init¸Ş¼­µåÀÇ ¸Å°³º¯¼ö·Î Àü´ŞµÇ´Â ServletConfig °´Ã¼´Â, ¸» ±×´ë·Î ¼­ºí¸´ÀÇ È¯°æÁ¤º¸¸¦ ´ã°íÀÖ´Â °´Ã¼ÀÌ´Ù!
-	//±×¸®°í ÀÌ ServletConfig °´Ã¼´Â, ÅèÄÏ¿¡ ÀÇÇØ »ı¼ºµÇ¾î ¼­ºí¸´¿¡°Ô Àü´ŞµÇ¾î Áø´Ù 
+
+	//ì•„ë˜ì˜ ë©”ì„œë“œëŠ” ì„œë¸”ë¦¿ì˜ ì¸ìŠ¤í„´ìŠ¤ê°€ ìƒì„±ë˜ì ë§ˆì, ì›¹ì»¨í…Œì´ë„ˆì¸ í†°ì¼“ì— ì˜í•´ ì´ˆê¸°í™” ë˜ê¸° ìœ„í•œ ìš©ë„ë„ ì‚¬ìš©ëœë‹¤ 
+	//ê·¸ë¦¬ê³  initë©”ì„œë“œì˜ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë˜ëŠ” ServletConfig ê°ì²´ëŠ”, ë§ ê·¸ëŒ€ë¡œ ì„œë¸”ë¦¿ì˜ í™˜ê²½ì •ë³´ë¥¼ ë‹´ê³ ìˆëŠ” ê°ì²´ì´ë‹¤!
+	//ê·¸ë¦¬ê³  ì´ ServletConfig ê°ì²´ëŠ”, í†°ì¼“ì— ì˜í•´ ìƒì„±ë˜ì–´ ì„œë¸”ë¦¿ì—ê²Œ ì „ë‹¬ë˜ì–´ ì§„ë‹¤ 
 	public void init(ServletConfig config) throws ServletException {
 		String msg=config.getInitParameter("msg");
 		System.out.println(msg);
 	}
 	
-	//¿äÃ»À» Ã³¸®ÇÏ´Â ¸Ş¼­µå 
+	//ìš”ì²­ì„ ì²˜ë¦¬í•˜ëŠ” ë©”ì„œë“œ 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+		
+		
 	}
 	
-	//Å¬¶óÀÌ¾ğÆ®ÀÇ ¿äÃ»ÀÌ Get¹æ½ÄÀÏ °æ¿ì µ¿ÀÛÇÏ´Â ¸Ş¼­µå, ÀÌ ¸Ş¼­µå´Â service ¸Ş¼­µå¿¡ ÀÇÇØ È£ÃâµÈ´Ù!
-	//ÀÌ¶§, Á¤ÀÇµÈ ¿äÃ», ÀÀ´ä ¸Å°³º¯¼öµµ service ¸Ş¼­µåÀÇ °ÍÀ» Àü´Ş¹Ş°Ô µÈ´Ù. Áï ½ÇÁ¦ÀûÀ¸·Î ¾÷¹«¸¦ Ã³¸®ÇÏ´Â ¸Ş¼­µå´Â 
-	//¹Ù·Î doXXXÀÌ´Ù 
+	//í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ì´ Getë°©ì‹ì¼ ê²½ìš° ë™ì‘í•˜ëŠ” ë©”ì„œë“œ, ì´ ë©”ì„œë“œëŠ” service ë©”ì„œë“œì— ì˜í•´ í˜¸ì¶œëœë‹¤!
+	//ì´ë•Œ, ì •ì˜ëœ ìš”ì²­, ì‘ë‹µ ë§¤ê°œë³€ìˆ˜ë„ service ë©”ì„œë“œì˜ ê²ƒì„ ì „ë‹¬ë°›ê²Œ ëœë‹¤. ì¦‰ ì‹¤ì œì ìœ¼ë¡œ ì—…ë¬´ë¥¼ ì²˜ë¦¬í•˜ëŠ” ë©”ì„œë“œëŠ” 
+	//ë°”ë¡œ doXXXì´ë‹¤ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet() ¸Ş¼­µå¿¡¼­ ¿äÃ»À» Ã³¸®ÇÕ´Ï´Ù");
+		System.out.println("doGet() ë©”ì„œë“œì—ì„œ ìš”ì²­ì„ ì²˜ë¦¬í•©ë‹ˆë‹¤");
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doPost() ¸Ş¼­µå¿¡¼­ ¿äÃ»À» Ã³¸®ÇÕ´Ï´Ù");
+		System.out.println("doPost() ë©”ì„œë“œì—ì„œ ìš”ì²­ì„ ì²˜ë¦¬í•©ë‹ˆë‹¤");
 	}
 	
 	@Override
 	public void destroy() {
-		System.out.println("Àú Á×¾î¿ä..");
+		System.out.println("ì € ì£½ì–´ìš”..");
 	}
 }
+
 
 
 
