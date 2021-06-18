@@ -57,7 +57,8 @@ $(function(){
 //바이너리 파일이 포함된 요청을 처리할 수 없다!!
 function regist(){
 	$("form").attr({
-		"action":"/gallery/upload.jsp",
+		//"action":"/gallery/upload.jsp",
+		"action":"/upload",
 		"enctype":"multipart/form-data",
 		"method":"post"
 	});	
