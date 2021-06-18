@@ -1,5 +1,6 @@
 package site0617.gallery;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -12,12 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 
+import site0617.model.domain.Gallery;
+import site0617.model.gallery.dao.GalleryDAO;
+import site0617.util.FileManager;
+
 //이미 jsp로도 업로드 처리가 가능하겠으나, 서블릿을 다시 한번 공부해보고자 이 클래스를 작성하는 것임!!
 public class UploadServlet extends HttpServlet{
 	ServletContext context;
+	GalleryDAO galleryDAO;
 	
 	public void init(ServletConfig config) throws ServletException {
 		context = config.getServletContext();
+		galleryDAO = new GalleryDAO();
 	}
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,9 +55,39 @@ public class UploadServlet extends HttpServlet{
 		try {
 			//하기전
 			MultipartRequest multi = new MultipartRequest(request, path, maxSize,"utf-8");
-			out.print("업로드에 성공<br>");
-			//이미 서버에 업로드된 파일의 이름을 바꾸자!!
 			
+			//이미 서버에 업로드된 파일의 이름을 바꾸자!!
+			File file=multi.getFile("myfile"); //이미 업로드된 파일얻기
+			long time = System.currentTimeMillis();
+			
+			String destName=time+"."+FileManager.getExt(file.getName());//새로운 파일명
+			
+			File dest = new File(path+"/"+destName); //새로 만들어질 파일 생성
+			file.renameTo(dest);
+
+			out.print("업로드에 성공<br>");
+			
+			//텍스트 파라미터 받기!!
+			String title=multi.getParameter("title");
+			String writer=multi.getParameter("writer");
+			String content=multi.getParameter("content");
+			
+			//db에 넣기!!
+			Gallery gallery = new Gallery(); //empty
+			gallery.setTitle(title);//제목
+			gallery.setWriter(writer);//작성자
+			gallery.setContent(content);
+			gallery.setFilename(destName);//새로운 파일명 
+			
+			int result = galleryDAO.insert(gallery);
+			
+			if(result==0) {
+				out.print("등록실패");
+			}else {
+				out.print("등록성공");
+				//리스트 요청 
+				response.sendRedirect("/gallery/list.jsp"); //지정한 url로 다시 재접속을 명령(클라이언트에게..)
+			}
 		} catch (IOException e) {
 			out.print("업로드에 실패하였습니다.용량을 확인해보세요<br>");
 			e.printStackTrace(); //원인을 분석할 수 있도록 스택구조로 출력 (개발자를 위한 것)
