@@ -14,7 +14,7 @@
 			<param-name>msg</param-name>
 			<param-value>나는 서블릿이다</param-value>
 		</init-param>						
-	</servlet>
+	</servlet> 
 	<servlet-mapping>
 		<servlet-name>myServlet</servlet-name>
 		<url-pattern>/test</url-pattern>
