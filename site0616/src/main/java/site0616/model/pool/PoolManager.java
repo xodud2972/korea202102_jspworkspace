@@ -25,14 +25,15 @@ public class PoolManager {
 		}
 	}
 	
-	//생성자를 아무도 못쓰게 막아놓았으므로, 외부의 클래스들이 
+	//생성자를 아무도 못쓰게 막아놓았으므로(private로 poolmanager를 감쌈), 외부의 클래스들이 
 	//PoolManager의 인스턴스를 반환받아갈수 있도록 책임을 지자!
+	// new해도 접근할 수 있도록static을 넣어준다.
 	public static PoolManager getInstance() {
 		if(instance==null) {
 			instance = new PoolManager();
 		}
 		return instance;
-	}
+	} 
 	
 	
 	//누구든지 쿼리문을 수행하기 위해 Connection이 필요하다면 아래의 메서드를 호출하여  Connection을 가져가기만 하면 됨

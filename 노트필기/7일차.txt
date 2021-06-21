@@ -22,3 +22,13 @@
 init() : 생성자 아님, 생성자 호출 후, 초기화 시 호출됨 
 service()
 destory()
+
+[ 업로드 컴포넌트 ]
+다른 개발자 혹은 회사에서 만든 업로드 관련 유,무료 라이브러리
+-무료 : oreilly에서 제작한 cos.jar     http://servlets.com
+          apache에서 제작한 apache fileupload
+
+
+
+
+

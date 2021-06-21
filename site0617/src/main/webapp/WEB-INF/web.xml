@@ -23,4 +23,18 @@
 		<url-pattern>/delete</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>photoServlet</servlet-name>
+		<servlet-class>site0617.photo.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>photoServlet</servlet-name>
+		<url-pattern>/photo/upload</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
+
+
+
+
+

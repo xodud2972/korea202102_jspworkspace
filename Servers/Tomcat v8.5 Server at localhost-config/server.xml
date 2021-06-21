@@ -32,11 +32,39 @@
   <!-- Global JNDI resources
        Documentation at /docs/jndi-resources-howto.html
   -->
+  
+  <!-- 앞으로 우리가 사용할 DBMS 제품마다 각각 커넥션 풀을 사용할 수 있으며, 이 커넥션 풀을 사용하는 방법에 있어서는
+  javaEE 기반의 서버들이 JDNI를 이용한다.
+  JDNI ? Java Naming Directory Interface
+  	- 특정 데이터를 자바 코드에 두지말고, 외부의 설정파일에 둠으로써, 유지보수 성을 올리려는 자바 분야의 데이터 관리 기법
+  		이 때, 설정 파일에 명시한 데이터는 이름으로 검색할 수 있다. 
+  -->
   <GlobalNamingResources>
     <!-- Editable user database that can also be used by
-         UserDatabaseRealm to authenticate users
+         UserDatabaseRealm to authenticate user
     -->
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
+    
+    <!-- 앞으로 우리가 사용할 DB 접속 정보는 자바 소스내에 두지 말고, 아래의 설정 영역에 명시하자 ( 유지보수성을 높이기 위해)
+    	그리고, 아래의 데이터베이스 접속 정보를 우리의 자바 코드에서 접근하게 하기 위해 이름을 부여해놓고, 이 이름을 검색하여
+    	DB정보를 즉 커넥션을 자바가 취득해 갈 수 있도록 .JNDI로 설정하자. (MS-Active Directory와 비슷) 
+    	
+    	결론  : 아래와 같이 셋팅을 하면, 오라클에 대한 커넥션 풀을 이름으로 찾을 수 있도록 세팅 한 것이다.
+     -->
+    <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="3000" name="jndi/oracle" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="webmaster"/>
+    
+    <Resource auth="Container" 
+      name="jndi/mysql" 
+   	  driverClassName="com.mysql.jdbc.Driver"
+      url="jndi/mysql://localhost:3306/javase?characterEncdoing=UTF-8"
+      username="root"
+      password="1234" 
+	  maxActive="20"
+      maxIdle="10" 
+      maxWait="3000" 
+      type="javax.sql.DataSource" 
+       />
+       
   </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share
@@ -153,7 +181,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="site0615" path="/site0615" reloadable="true" source="org.eclipse.jst.jee.server:site0615"/><Context docBase="site0616" path="/" reloadable="true" source="org.eclipse.jst.jee.server:site0616"/></Host>
+      <Context docBase="site0615" path="/site0615" reloadable="true" source="org.eclipse.jst.jee.server:site0615"/><Context docBase="site0616" path="/site0616" reloadable="true" source="org.eclipse.jst.jee.server:site0616"/><Context docBase="site0617" path="/site0617" reloadable="true" source="org.eclipse.jst.jee.server:site0617"/><Context docBase="site0621" path="/" reloadable="true" source="org.eclipse.jst.jee.server:site0621"/></Host>
     </Engine>
   </Service>
 </Server>

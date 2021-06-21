@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%!
-	BoardDAO boardDAO = new BoardDAO(); //서블릿의 service() 안에 작성한 것임
+	BoardDAO boardDAO = new BoardDAO(); // 등록요청을 할 때마다 생성되지 않게 하기 위해 애초에 선언부에 올려놓기
 %>    
 <%
 	//파라미터 받기!!

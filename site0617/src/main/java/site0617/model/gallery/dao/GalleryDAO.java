@@ -124,7 +124,48 @@ public class GalleryDAO {
 		
 	}
 	
+	//겔러리 1건 수정 
+	public int update(Gallery gallery) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int result=0;
+		
+		con=pool.getConnection();
+		String sql="update gallery set title=?, writer=?, content=?, filename=? where gallery_id=?";
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, gallery.getTitle());
+			pstmt.setString(2, gallery.getWriter());
+			pstmt.setString(3, gallery.getContent());
+			pstmt.setString(4, gallery.getFilename());
+			pstmt.setInt(5, gallery.getGallery_id());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			pool.release(con, pstmt);
+		}
+		return result;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

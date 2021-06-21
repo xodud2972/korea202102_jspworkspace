@@ -14,7 +14,7 @@ import site0616.model.pool.PoolManager;
 //일반적인 어플리케이션 설계 분야에서 이러한 역할(Database와 연동되어 CRUD만을 수행)을 
 //수행하는 객체를 가리켜 DAO(Data Access Object)라 한다. 
 public class BoardDAO {
-	PoolManager poolManager=PoolManager.getInstance(); //싱글턴으로 선언된 PoolManager의 인스턴스 얻기
+	PoolManager poolManager=PoolManager.getInstance(); //싱글턴기법 으로 선언된 PoolManager의 인스턴스 얻기
 	
 	//Create(==insert) Read(==select) Update Delete 메서드 정의
 	//글쓰기(글 한건 등록)
@@ -133,7 +133,7 @@ public class BoardDAO {
 		}finally {
 			poolManager.release(con, pstmt);					
 		}
-		return result;
+		return result; // return 값이 있는 result는 반드시 public 뒤에int가 와야 한다.
 	}
 	
 	

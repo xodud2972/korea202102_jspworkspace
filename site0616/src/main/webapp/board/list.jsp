@@ -6,7 +6,7 @@
 	BoardDAO boardDAO = new BoardDAO();
 %>
 <%
-	List<Board> boardList= boardDAO.selectAll();
+	List<Board> boardList= boardDAO.selectAll(); 
 %>
 <!DOCTYPE html>
 <html>
