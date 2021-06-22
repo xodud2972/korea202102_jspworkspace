@@ -82,6 +82,7 @@ function del(){
 	if(confirm("삭제하시겠어요?")){
 		$("form").attr({
 			"action":"/delete",
+			//"enctype":"multipart/form-data",
 			"method":"post"
 		});	
 		$("form").submit();		

@@ -35,7 +35,7 @@ public class BoardDAO {
 		return result;
 	}
 	
-	//목록 (5분)
+	//목록 가져오기
 	public List selectAll() {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -140,8 +140,6 @@ public class BoardDAO {
 	}	
 	
 }
-
-
 
 
 

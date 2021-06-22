@@ -62,7 +62,7 @@ public class RegistServlet extends HttpServlet{
 			List<FileItem> itemList=upload.parseRequest(request);
 			out.print("넘겨받은 컴포넌트 값의 수는 "+itemList.size()+"<br>");
 			for( FileItem item : itemList) {
-				if(item.isFormField()) { //inpuyt type='text' 박스라면...
+				if(item.isFormField()) { //input type='text' 박스라면...
 					
 					out.print(item.getFieldName()+"필드의 값은 "+item.getString("utf-8")+"<br>");
 					
