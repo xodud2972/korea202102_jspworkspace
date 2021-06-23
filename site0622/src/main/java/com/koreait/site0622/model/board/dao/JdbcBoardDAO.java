@@ -10,8 +10,6 @@ import java.util.List;
 import com.koreait.site0622.model.domain.Board;
 import com.koreait.site0622.util.pool.PoolManager;
 
-
-
 public class JdbcBoardDAO implements BoardDAO{
 	PoolManager pool = PoolManager.getInstance();
 	
@@ -23,6 +21,7 @@ public class JdbcBoardDAO implements BoardDAO{
 		int result=0;
 		
 		String sql="insert into board(title, writer, content) values(?,?,?)";
+		
 		try {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());
@@ -37,7 +36,7 @@ public class JdbcBoardDAO implements BoardDAO{
 		return result;
 	}
 	
-	//목록 가져오기
+	//목록 (5분)
 	public List selectAll() {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -142,6 +141,8 @@ public class JdbcBoardDAO implements BoardDAO{
 	}	
 	
 }
+
+
 
 
 
