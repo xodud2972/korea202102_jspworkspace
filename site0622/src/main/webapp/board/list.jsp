@@ -1,10 +1,10 @@
-
 <%@page import="com.koreait.site0622.model.board.dao.BoardDAO"%>
 <%@page import="com.koreait.site0622.model.board.dao.JdbcBoardDAO"%>
 <%@page import="com.koreait.site0622.model.domain.Board"%>
+<%@page import="com.koreait.site0622.model.board.dao.MybatisBoardDAO"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=utf-8"%>
-<%! BoardDAO boardDAO = new JdbcBoardDAO();%>O
+<%!BoardDAO boardDAO = new MybatisBoardDAO();%>
 <%
 	List<Board> boardList = boardDAO.selectAll(); //총 레코드수 가져오기
 	int totalRecord=boardList.size();//총 게시물 수
@@ -23,8 +23,8 @@
 	}
 	int firstPage=currentPage- ((currentPage-1)%blockSize);
 	int lastPage=firstPage+(blockSize-1);
-	int curPos = (currentPage-1)*pageSize; // 페이지당 List의 시작 indexr구하기
-	int num=totalRecord - curPos;	
+	int curPos=(currentPage-1)*pageSize;//페이지당 List의 시작 index구하기
+	int num=totalRecord - curPos;
 %>
 <%="당신이 보고 잇는 페이지는 "+currentPage+"<br>" %>
 <!DOCTYPE html>
@@ -61,8 +61,8 @@ tr:nth-child(even) {
 <script>
 $(function(){
 	$("button").click(function(){
-		location.href = "/board/regist.jsp";
-	})
+		location.href="/board/regist.jsp";
+	});
 });
 </script>
 </head>
@@ -78,7 +78,7 @@ $(function(){
 		<th>등록일</th>
 		<th>조회수</th>
 	</tr>
-	<%for(int i=1;i<pageSize;i++){ %>
+	<%for(int i=1;i<=pageSize;i++){ %>
 	<%if(num<1)break; %>
 	<%Board board = boardList.get(curPos++); %>
 	<tr>

@@ -53,7 +53,7 @@ $(function(){
 
 function regist(){
 	$("form").attr({
-		"action":"/board/regist",
+		"action":"/news/regist",
 		"method":"post"
 	});	
 	$("form").submit();
@@ -64,7 +64,7 @@ function regist(){
 </head>
 <body>
 
-<h3>Contact Form</h3>
+<h3>뉴스 등록</h3>
 
 <div class="container">
   <form>
