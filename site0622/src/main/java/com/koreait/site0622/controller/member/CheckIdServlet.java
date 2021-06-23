@@ -13,31 +13,51 @@ import com.koreait.site0622.model.member.dao.MemberDAO;
 import com.koreait.site0622.model.member.dao.MybatisMemberDAO;
 import com.koreait.site0622.util.message.MessageObject;
 
-// 아이디 중복 체크 여부 확인 서블릿 
+//아이디 중복체크 여부 확인 서블릿
 public class CheckIdServlet extends HttpServlet{
 	MemberDAO memberDAO;
-	MessageObject messageobject;
+	MessageObject messageObject;
 	
 	public void init() throws ServletException {
 		memberDAO = new MybatisMemberDAO();
-		messageobject = new MessageObject();
+		messageObject = new MessageObject();
 	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//파라미터 넘겨받아, member 테이블에 이미 존재하는지 여부를 체크해보자.
+		//파라미터 넘겨받아, member테이블에 이미 존재하는지 여부를 체크해보자!
 		String user_id = request.getParameter("user_id");
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		out.print("넘겨받은 아이디" + user_id + "<br>");
-		Member member = memberDAO.getMemberById(user_id); //다형성
+		//out.print("넘겨받은 아이디는 "+user_id+"<br>");
+		Member member = memberDAO.getMemberById(user_id);//多다形형성
+		System.out.println(member);
+		/*
+		 * //동기방식일때 적절한 응답정보
 		if(member==null) {
-			//회원가입 진행해도 된다.
-			out.print(messageobject.getMsgURL("사용 가능한 아이디 입니다.", "/member/signup.jsp"));
+			//회원가입 진행해도 됨...
+			//out.print(messageObject.getMsgURL("사용가능한 아이디입니다", "/member/signup.jsp"));
 		}else {
-			//회원가입 진행을 거절한다.
-			out.print(messageobject.getmsgBack("이미 사용 중인 아이디 입니다."));
+			//욕하고 거절!!
+			out.print(messageObject.getMsgBack("이미 사용중인 아이디입니다"));
+		}
+		*/
+		
+		//비동기에 적절한 응답 보내기 
+		if(member==null) {
+			out.print(0); //중복된 회원없슴 (회원가입 가능)
+		}else {
+			out.print(1);//가입불가
 		}
 		
 	}
 }
+
+
+
+
+
+
+
+
