@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.koreait.site0622.model.domain.Board" 		alias="Board"/>
-		<typeAlias type="com.koreait.site0622.model.domain.Member" 	alias="Member"/>
+		<typeAlias type="com.koreait.site0622.model.domain.Board" 			alias="Board"/>
+		<typeAlias type="com.koreait.site0622.model.domain.Member" 		alias="Member"/>
 		<typeAlias type="com.koreait.site0622.model.domain.Dept" 			alias="Dept"/>
 		<typeAlias type="com.koreait.site0622.model.domain.Emp" 			alias="Emp"/>
 		<typeAlias type="com.koreait.site0622.model.domain.News" 			alias="News"/>

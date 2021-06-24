@@ -8,29 +8,29 @@ import com.koreait.site0622.model.domain.News;
 import com.koreait.site0622.model.mybatis.MybatisConfigManager;
 
 public class MybatisNewsDAO implements NewsDAO{
-
-	MybatisConfigManager ConfigManager = MybatisConfigManager.getInstance();
+	MybatisConfigManager configManager=MybatisConfigManager.getInstance();
 	
 	public int insert(News news) {
-		SqlSession sqlSession = ConfigManager.getSession();
+		SqlSession sqlSession = configManager.getSession();
 		int result = sqlSession.insert("News.insert", news);
-		sqlSession.commit(); //DML
-		ConfigManager.closeSession(sqlSession);
+		sqlSession.commit();//DML
+		configManager.closeSession(sqlSession);
 		return result;
 	}
 
-	@Override
 	public List selectAll() {
-		SqlSession sqlSession = ConfigManager.getSession();
-		List list = sqlSession.selectList("News.selectAll");
-		ConfigManager.closeSession(sqlSession);
+		SqlSession sqlSession = configManager.getSession();
+		List list=sqlSession.selectList("News.selectAll");
+		configManager.closeSession(sqlSession);
 		return list;
 	}
 
 	@Override
-	public News select(int News_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public News select(int news_id) {
+		SqlSession sqlSession = configManager.getSession();
+		News news = sqlSession.selectOne("News.select", news_id);
+		configManager.closeSession(sqlSession);
+		return news;
 	}
 
 	@Override
@@ -40,9 +40,9 @@ public class MybatisNewsDAO implements NewsDAO{
 	}
 
 	@Override
-	public int delete(News news) {
+	public int delete(int news_id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
 }

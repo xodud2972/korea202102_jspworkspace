@@ -9,4 +9,5 @@ public class Comments {
 	private String cwriter;
 	private String cdate;
 	private int news_id;
+	
 }

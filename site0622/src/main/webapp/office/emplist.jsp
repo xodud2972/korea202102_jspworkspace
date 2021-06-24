@@ -31,7 +31,7 @@
 			<td><%=emp.getEmpno() %></td>
 			<td><%=emp.getEname()%></td>
 			<td><%=emp.getJob()%></td>
-			<td><%=emp.getManager() %></td>
+			<td><%=emp.getManager()%></td>
 			<td><%=emp.getHiredate()%></td>
 			<td><%=emp.getSal()%></td>
 			<td><%=emp.getComm()%></td>

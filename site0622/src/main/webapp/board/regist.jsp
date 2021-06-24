@@ -64,7 +64,7 @@ function regist(){
 </head>
 <body>
 
-<h3>Contact Form</h3>
+<h3>뉴스 등록</h3>
 
 <div class="container">
   <form>
