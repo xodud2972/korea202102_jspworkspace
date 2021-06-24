@@ -48,8 +48,35 @@ input[type=button]:hover {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-<script type="text/javascript">
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+<script src="/js/Comments.js"></script>
+<script type="text/babel">
+	class CustomComments extends React.Component{
+		render(){
+			//return 영역 밖에서 원하는 태그를 구성한 후, 완성된 태그를 return안에서 사용하면 된다..
+			var tag=[];
+			for(var i=0;i<10;i++){
+				tag.push(
+				<div>
+					<input type="text" value={i}/>
+					<input type="text" value={0}/>
+					<input type="text" value={0}/>
+				</div>
+				);
+			}
+			return 	<div>						
+							{tag}
+						</div>
+		}
+	}
+
 $(function(){
+
+	
+
 	CKEDITOR.replace("content");
 	
 	var bt_list=$("input[type='button']")[0]; //목록
@@ -66,7 +93,10 @@ $(function(){
 	$(bt_del).click(function(){
 		//regist();	
 	});
-	getComments.list();
+	
+	//방법3) React의 컴포넌트를 이용하는 법 
+	getCommentsList();//상세보기가 로드되면, 댓글 리스트 가져오기
+
 });
 
 //수정요청
@@ -96,6 +126,8 @@ function registComments(){
 }
 
 function getCommentsList(){
+
+
 	//비동기방식으로 댓글 리스트 요청하자!!!
 	$.ajax({
 		url:"/comments/list?news_id=<%=news.getNews_id()%>",
@@ -107,7 +139,8 @@ function getCommentsList(){
 			
 			//넘겨받은 데이터가 json 자체일 경우는 파싱할 필요없다
 			console.log(result);	
-			printCommentsList(result);
+
+			ReactDOM.render(<CustomComments/> , document.getElementById("commentsArea"))
 		}
 	});
 }
@@ -135,6 +168,20 @@ function printCommentsList(json){ //js는 자료형이 존재하지 않음 (자�
 	//jquery 로 구현
 	$("#commentsArea").append(tag);
 }
+
+//방법2)  출력대상이 되는 태그를 객체로 처리하는 법 
+function printCommentsList2(json){
+	$("#commentsArea").html("");//기존에 데이터 삭제 
+	
+	for(var i=0;i<json.commentsList.length;i++){
+		var obj=json.commentsList[i];
+		var comments=new Comments(document.getElementById("commentsArea"),obj.msg, obj.cwriter, obj.cdate);
+	}	
+}
+
+
+</script>
+<script>
 </script>
 </head>
 <body>

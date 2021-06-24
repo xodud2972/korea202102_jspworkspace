@@ -43,5 +43,18 @@ insert into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7900,'JAMES','CL
 insert into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7902,'FORD','ANALYST',7566,'81/12/03',3000,20);
 insert into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7934,'MILLER','CLERK',7782,'82/01/23',1300,10);
 
+[ join 유형 ]
+inner Join - 조인 대상이 되는 테이블간 공통 레코드만 가져온다
+
+outer Join - 조인 대상이 되는 테이블간 공통 레코드를 가져오되, 지정한 테이블에 대해서는
+                 공통되지 않는 모든 데이터를 가져올수 있는 조인
 
 
+create table comments(
+comments_id int primary key auto_increment
+, msg varchar(100)
+, cwriter varchar(20)
+, cdate timestamp default now()
+, news_id int
+, foreign key(news_id) references news(news_id)
+) default character set utf8;
