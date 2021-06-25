@@ -54,16 +54,18 @@ input[type=button]:hover {
 
 <script src="/js/Comments.js"></script>
 <script type="text/babel">
+
 	class CustomComments extends React.Component{
 		render(){
 			//return 영역 밖에서 원하는 태그를 구성한 후, 완성된 태그를 return안에서 사용하면 된다..
 			var tag=[];
-			for(var i=0;i<10;i++){
+			for(var i=0;i<this.props.result.commentsList.length;i++){
+				var obj=this.props.result.commentsList[i];
 				tag.push(
 				<div>
-					<input type="text" value={i}/>
-					<input type="text" value={0}/>
-					<input type="text" value={0}/>
+					<input type="text" value={obj.msg} style={{width:"60%"}}/>
+					<input type="text" value={obj.cwriter} style={{width:"20%"}}/>
+					<input type="text" value={obj.cdate} style={{width:"15%"}}/>
 				</div>
 				);
 			}
@@ -127,7 +129,6 @@ function registComments(){
 
 function getCommentsList(){
 
-
 	//비동기방식으로 댓글 리스트 요청하자!!!
 	$.ajax({
 		url:"/comments/list?news_id=<%=news.getNews_id()%>",
@@ -140,7 +141,7 @@ function getCommentsList(){
 			//넘겨받은 데이터가 json 자체일 경우는 파싱할 필요없다
 			console.log(result);	
 
-			ReactDOM.render(<CustomComments/> , document.getElementById("commentsArea"))
+			ReactDOM.render(<CustomComments result={result}/> , document.getElementById("commentsArea"))
 		}
 	});
 }
