@@ -1,0 +1,17 @@
+[ MVC 프레임웍의 제작 ]
+MVC라는 것은 큰 규모의 프로젝트를 제작시 개발방법이론 
+javaSE  vs   javaEE(웹)
+
+javaEE 에서 MVC패턴을 적용한 개발모델을 가리켜 Model2 라 한다 
+Model2 방식에서의 기술 구현은 다음과 같다.
+
+Model : 그냥 일반 java 클래스 (POJO==Plain Old Java Object)
+View  : jsp
+Controller : Servlet
+
+[제작과정]
+1.스크립트 기반일 경우 :  디자인 + 로직 등이 모두 일체형이다!
+			     장점) 개발속도 빠르다, 시간, 비용이 저렴
+			     단점) 유지보수가 힘들다( 디자인 , 로직이 스파게티화됨)
+			     적용대상) 소규모 개발에 적절함
+			     온라인 광고 + 홈페이지 제작업 = 웹에이전시 ( asp, php, jsp)	
