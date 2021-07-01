@@ -12,7 +12,7 @@ select{
 </style>
 <script>
 function send(){
-	form1.action="/blood.do"; // url 에 의미를 담자. ( 의미를 담을 수 있는 수단이 된다. )
+	form1.action="/blood.do"; //url에 의미를 담자(의미를 담을 수 있는 수단이 된다..)
 	form1.method="post";
 	form1.submit();
 }

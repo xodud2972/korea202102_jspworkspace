@@ -1,1 +1,11 @@
+#컨트롤러 매핑
 /blood.do=com.koreait.model2app.controller.blood.BloodController
+/movie.do=com.koreait.model2app.controller.movie.MovieController
+/board/list.do=com.koreait.model2app.controller.board.ListController
+/board/regist.do=com.koreait.model2app.controller.board.RegistController
+
+#뷰 매핑
+/blood/result=/blood/result.jsp
+/movie/result=/movie/result.jsp
+/result/board/list=/board/list.jsp
+/result/board/regist=/board/list.do
