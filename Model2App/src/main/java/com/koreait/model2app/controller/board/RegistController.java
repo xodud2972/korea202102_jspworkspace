@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.model2app.controller.Controller;
 import com.koreait.model2app.model.board.dao.BoardDAO;
-import com.koreait.model2app.model.board.dao.MybatisBoardDAO;
+import com.koreait.model2app.model.board.dao.JdbcBoardDAO;
 import com.koreait.model2app.model.domain.Board;
 
 //게시판의 글쓰기 요청을 처리하는 하위 컨트롤러
@@ -13,7 +13,8 @@ public class RegistController implements Controller{
 	BoardDAO boardDAO;
 	
 	public RegistController() {
-		boardDAO = new MybatisBoardDAO();
+		//boardDAO = new MybatisBoardDAO();
+		boardDAO = new JdbcBoardDAO();
 	}
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) {

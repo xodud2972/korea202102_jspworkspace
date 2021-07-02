@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.model2app.controller.Controller;
 import com.koreait.model2app.model.board.dao.BoardDAO;
+import com.koreait.model2app.model.board.dao.JdbcBoardDAO;
 import com.koreait.model2app.model.board.dao.MybatisBoardDAO;
 
 //Board의 요청 중 목록 요청을 처리하는 하위 컨트롤러 
@@ -14,7 +15,8 @@ import com.koreait.model2app.model.board.dao.MybatisBoardDAO;
 public class ListController implements Controller{
 	BoardDAO boardDAO;
 	public ListController() {
-		boardDAO = new MybatisBoardDAO();
+		//boardDAO = new MybatisBoardDAO();
+		boardDAO = new JdbcBoardDAO();
 	}
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		List list=boardDAO.selectAll();
