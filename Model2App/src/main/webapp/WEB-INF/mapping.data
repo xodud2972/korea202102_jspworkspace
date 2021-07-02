@@ -12,4 +12,4 @@
 /result/board/list=/board/list.jsp
 /result/board/regist=/board/list.do
 /result/board/detail=/board/detail.jsp
-/result/board/edit=/board/detail.do
+/result/board/edit=/board/detail.do 

@@ -30,14 +30,20 @@ public class MybatisBoardDAO implements BoardDAO{
 
 	@Override
 	public Board select(int board_id) {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession sqlSession = configManager.getSession();
+		Board board=sqlSession.selectOne("Board.select", board_id);
+		configManager.closeSession(sqlSession);
+		return board;
 	}
 
 	@Override
 	public int update(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
+		SqlSession sqlSession = configManager.getSession();
+		int result=sqlSession.update("Board.update", board);
+		sqlSession.commit(); //DML
+		configManager.closeSession(sqlSession);
+		
+		return result;
 	}
 
 	@Override

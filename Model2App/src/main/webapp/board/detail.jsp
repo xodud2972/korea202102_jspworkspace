@@ -1,13 +1,7 @@
-<%@page import="site0616.model.domain.Board"%>
-<%@page import="site0616.board.model.dao.BoardDAO"%>
+<%@page import="com.koreait.model2app.model.domain.Board"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%!	
-	BoardDAO boardDAO = new BoardDAO();
-%>
 <%
-	String board_id = request.getParameter("board_id"); //전송된 파라미터 받기!
-	
-	Board board=boardDAO.select(Integer.parseInt(board_id)); //레코드 한건 가져오기!!
+	Board board=(Board)request.getAttribute("board");//하위 컨트롤러가 심어놓은 객체를 꺼내기!!
 %>
 <!DOCTYPE html>
 <html>
@@ -80,7 +74,7 @@ function del(){
 
 function edit(){
 	$("form").attr({
-		"action":"/board/edit.jsp",
+		"action":"/board/edit.do",
 		"method":"post"
 	});	
 	$("form").submit();
