@@ -33,7 +33,8 @@ public class EditController implements Controller{
 		board.setWriter(writer);
 		board.setContent(content);
 		
-		boardDAO.update(board); //3단계: 일 시키기!!!
+		int result = boardDAO.update(board); //3단계: 일 시키기!!!
+		System.out.println("수정 후 result 는 "+result);
 		
 		//request.setAttribute("board", board); //4단계: vo 심기
 	}

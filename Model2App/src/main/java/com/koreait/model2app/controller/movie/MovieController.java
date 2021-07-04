@@ -22,7 +22,10 @@ public class MovieController implements Controller{
 		//4단계: 결과저장 
 		request.setAttribute("msg", msg);
 	}
-	
+	@Override
+	public boolean isForward() {
+		return true;
+	}	
 	public String getViewName() {
 		return "/movie/result";
 	}

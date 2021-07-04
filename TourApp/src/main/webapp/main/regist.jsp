@@ -1,6 +1,6 @@
 <%@page import="com.koreait.tourapp.model.store.dao.MybatisStoreDAO"%>
 <%@page import="com.koreait.tourapp.model.store.dao.StoreDAO"%>
-<%@page import="com.koreait.tourapp.util.FileManager"%>
+<%@page import="com.koreait.model2app.util.FileManager"%>
 <%@page import="com.koreait.tourapp.model.domain.Store"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
 <%@page import="java.util.List"%>

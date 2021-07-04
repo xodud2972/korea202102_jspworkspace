@@ -1,0 +1,15 @@
+[MVC Framework]
+MVC패턴을 적용한 업무틀 
+
+javaEE에서는 MVC패턴을 적용한 개발 모델을 가리켜 Model2방식
+Model1 
+
+[ Model2 - javaEE ]
+Model - 자바 POJO 클래스로 구현
+View - jsp
+Controller - 서블릿
+
+
+
+
+
