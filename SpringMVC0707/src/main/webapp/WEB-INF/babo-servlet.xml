@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 어떤 요청에 어떤 동생컨트롤러가 일할지 (컨트롤러 매핑) -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="alwaysUseFullPath" value="true"/>
+		
+		<!-- url에 어떤 클래스가 요청을 처리할지 매핑(map방식으로..) -->
+		<property name="mappings">
+			<props>
+				<prop key="/board/list">listController</prop>
+				<prop key="/board/detail">DetailController</prop>
+				<!-- 				
+				<prop key="/board/regist"></prop>
+				<prop key="/board/update"></prop>
+				<prop key="/board/delete"></prop> 
+				-->
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 모델 객체 등록 -->
+	<bean class="com.koreait.springmvc0707.model.mybatis.MybatisConfigManager" 
+		id="mybatisConfigManager" factory-method="getInstance"/>
+		
+	<bean class="com.koreait.springmvc0707.model.board.repository.MybatisBoardDAO" id="mybatisBoardDAO">
+		<property name="configManager" ref="mybatisConfigManager"></property>
+	</bean>
+	
+	<bean class="com.koreait.springmvc0707.model.board.service.BoardServiceImpl" id="boardServiceImpl">
+		<property name="boardDAO" ref="mybatisBoardDAO"/>
+	</bean>
+
+<!-- 컨트롤러 등록 (컨트롤러가 일시킬 서비스와 엮는다-weaving이라고 한다.)-->
+	<bean class="com.koreait.springmvc0707.controller.board.ListController" name="listController">
+		<property name="boardService" ref="boardServiceImpl"/>
+	</bean>
+	<bean class="com.koreait.springmvc0707.controller.board.DeatailController" name="DetailController">
+		<property name="boardService" ref="boardServiceImpl"/>
+	</bean>
+
+<!-- 어떤 페이지를 뷰페이지로 명시할지( 뷰매핑 ) 
+	InternalResourceViewResolver는 컨트롤러가 반환한 키값을 접두어 접미어를 이용하여 풀 페이지로 해석한다.
+-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
