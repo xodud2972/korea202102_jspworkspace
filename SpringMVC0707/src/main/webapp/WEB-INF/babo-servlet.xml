@@ -12,9 +12,9 @@
 			<props>
 				<prop key="/board/list">listController</prop>
 				<prop key="/board/detail">DetailController</prop>
+				<prop key="/board/update">UpdateController</prop>
 				<!-- 				
 				<prop key="/board/regist"></prop>
-				<prop key="/board/update"></prop>
 				<prop key="/board/delete"></prop> 
 				-->
 			</props>
@@ -39,6 +39,10 @@
 	</bean>
 	<bean class="com.koreait.springmvc0707.controller.board.DeatailController" name="DetailController">
 		<property name="boardService" ref="boardServiceImpl"/>
+	</bean>
+		
+	<bean class="com.koreait.springmvc0707.controller.board.UpdateController" id="updateController">
+		<property name="boardService" ref="boardServiceImpl"></property>
 	</bean>
 
 <!-- 어떤 페이지를 뷰페이지로 명시할지( 뷰매핑 ) 
