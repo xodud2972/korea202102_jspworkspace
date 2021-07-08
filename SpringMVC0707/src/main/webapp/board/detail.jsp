@@ -68,7 +68,7 @@ function del(){
 }
 function edit(){
 	$("form").attr({
-		"action":"/board/edit.do",
+		"action":"/board/edit",
 		"method":"post"
 	});	
 	$("form").submit();
