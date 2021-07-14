@@ -1,8 +1,4 @@
-<%@page import="com.koreait.springmvc0714.model.domain.Board"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%
-	Board board=(Board)request.getAttribute("board");//하위 컨트롤러가 심어놓은 객체를 꺼내기!!
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +7,7 @@
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
+
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -21,6 +18,7 @@ input[type=text], select, textarea {
   margin-bottom: 16px;
   resize: vertical;
 }
+
 input[type=button] {
   background-color: #04AA6D;
   color: white;
@@ -29,9 +27,11 @@ input[type=button] {
   border-radius: 4px;
   cursor: pointer;
 }
+
 input[type=button]:hover {
   background-color: #45a049;
 }
+
 .container {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -45,56 +45,35 @@ $(function(){
 	CKEDITOR.replace("content");
 	
 	//버튼에 이벤트 연결하기 
-	$("#bt_edit").click(function(){
-		if(confirm("수정하시겠어요?")){
-			edit();	
-		}
+	$("input[type='button']").click(function(){
+		regist();	
 	});
-	$("#bt_del").click(function(){
-		if(confirm("삭제하시겠어요?")){
-			del()	
-		}
-	});
-	$("#bt_list").click(function(){
-		location.href="/board/list.jsp";	
-	});	
 });
-function del(){
+
+function regist(){
 	$("form").attr({
-		"action":"/board/del.jsp",
-		"method":"post"
-	});	
-	$("form").submit();	
-}
-function edit(){
-	$("form").attr({
-		"action":"/board/edit",
+		"action":"/board/regist",
 		"method":"post"
 	});	
 	$("form").submit();
 }
+
+
 </script>
 </head>
 <body>
 
-<h3>상세보기</h3>
+<h3>Contact Form</h3>
 
 <div class="container">
   <form>
-  	<input type="hidden" name="board_id"  value="<%=board.getBoard_id()%>">
-    <input type="text" 	name="title" 			value="<%=board.getTitle()%>">
-    <input type="text" 	name="writer" 		value="<%=board.getWriter()%>">
-    <textarea name="content" 	style="height:200px"><%=board.getContent() %></textarea>
-
-    <input type="button" value="수정" id="bt_edit">
-    <input type="button" value="삭제" id="bt_del">
-    <input type="button" value="목록" id="bt_list">
+    <input type="text" 	name="title" 			placeholder="제목..">
+    <input type="text" 	name="writer" 		placeholder="작성자..">
+    <textarea 				name="content" 	placeholder="내용.." style="height:200px"></textarea>
+    <input type="button" value="Submit">
   </form>
 </div>
 
 </body>
 </html>
-
-
-
-
+    

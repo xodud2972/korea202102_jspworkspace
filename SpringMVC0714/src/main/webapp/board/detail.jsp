@@ -11,6 +11,7 @@
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
+
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -21,6 +22,7 @@ input[type=text], select, textarea {
   margin-bottom: 16px;
   resize: vertical;
 }
+
 input[type=button] {
   background-color: #04AA6D;
   color: white;
@@ -29,9 +31,11 @@ input[type=button] {
   border-radius: 4px;
   cursor: pointer;
 }
+
 input[type=button]:hover {
   background-color: #45a049;
 }
+
 .container {
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -56,23 +60,27 @@ $(function(){
 		}
 	});
 	$("#bt_list").click(function(){
-		location.href="/board/list.jsp";	
+		location.href="/board/list";	
 	});	
 });
+
 function del(){
 	$("form").attr({
-		"action":"/board/del.jsp",
+		"action":"/board/del",
 		"method":"post"
 	});	
 	$("form").submit();	
 }
+
 function edit(){
 	$("form").attr({
-		"action":"/board/edit",
+		"action":"/board/update",
 		"method":"post"
 	});	
 	$("form").submit();
 }
+
+
 </script>
 </head>
 <body>
@@ -98,3 +106,5 @@ function edit(){
 
 
 
+
+    

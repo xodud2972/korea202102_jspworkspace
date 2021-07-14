@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
+	
 	//BoardDAO dao = new MybatisBoardDAO(); //일시킨다!! 컨트롤러가 된다..jsp는 뷰이지 컨트롤러가 아니므로,이거 하지말자!!
 	List<Board> boardList=(List)request.getAttribute("boardList");//동생 컨트롤러가 심은 데이터 가져오기
 %>
@@ -19,10 +20,12 @@ table {
   position:relative;
   left:-1000px;
 }
+
 th, td {
   text-align: left;
   padding: 16px;
 }
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
