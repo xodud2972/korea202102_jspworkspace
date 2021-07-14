@@ -30,10 +30,10 @@
 
 	<bean class="com.koreait.springmvc0714.controller.board.DetailController" name="detailController"
 		p:boardService-ref="boardServiceImpl"/>
-		
-	<bean class="com.koreait.springmvc0714.controller.board.UpdateController" name="updateController"
+	
+	<bean class="com.koreait.springmvc0714.controller.board.UpdateController" name="updateController" 
 		p:boardService-ref="boardServiceImpl"/>
-		
+	
 	<bean class="com.koreait.springmvc0714.controller.board.DeleteController" name="deleteController"
 		p:boardService-ref="boardServiceImpl"/>
 	
@@ -50,7 +50,6 @@
 			</props>
 		</property>
 	</bean>	
-	
 	
 	<!-- 뷰 리절버 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver" 

@@ -30,14 +30,12 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void update(Board board) throws DMLException{
-		// TODO Auto-generated method stub
-		
+		boardDAO.update(board);
 	}
 
 	@Override
-	public void delete(int board_id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(int board_id) throws DMLException{
+		boardDAO.delete(board_id);
 	}
 	
 }

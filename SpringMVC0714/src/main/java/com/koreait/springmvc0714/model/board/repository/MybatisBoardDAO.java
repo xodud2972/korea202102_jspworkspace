@@ -46,25 +46,25 @@ public class MybatisBoardDAO implements BoardDAO{
 	@Override
 	public void update(Board board) throws DMLException{
 		SqlSession sqlSession = configManager.getSession();
-		int result = sqlSession.update("Board.update", board);
-		sqlSession.commit();
+		int result=sqlSession.update("Board.update", board);
+		sqlSession.commit(); //DML
 		configManager.closeSession(sqlSession);
-		if(result==0) {
-			throw new DMLException("수정실패");
-		}
 		
+		if(result==0) {
+			throw new DMLException("수정 실패");
+		}
 	}
 
 	@Override
-	public void delete(int board_id) throws DMLException {
+	public void delete(int board_id) throws DMLException{
 		SqlSession sqlSession = configManager.getSession();
-		int result = sqlSession.delete("Board.delete", board_id);
-		sqlSession.commit();
+		int result=sqlSession.delete("Board.delete", board_id);
+		sqlSession.commit(); //DML
 		configManager.closeSession(sqlSession);
+		
 		if(result==0) {
-			throw new DMLException("수정실패");
+			throw new DMLException("삭제 실패");
 		}
-	
 	}
 	
 }

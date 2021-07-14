@@ -23,6 +23,7 @@
 	<delete id="delete" parameterType="int">
 		delete from board where board_id=#{board_id}
 	</delete>
+	
 </mapper>
 
 

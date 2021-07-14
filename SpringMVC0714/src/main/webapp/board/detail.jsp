@@ -89,10 +89,10 @@ function edit(){
 
 <div class="container">
   <form>
-  	<input type="hidden" name="board_id"  value="<%=board.getBoard_id()%>">
-    <input type="text" 	name="title" 			value="<%=board.getTitle()%>">
-    <input type="text" 	name="writer" 		value="<%=board.getWriter()%>">
-    <textarea name="content" 	style="height:200px"><%=board.getContent() %></textarea>
+  	<input type="hidden" 	name="board_id"  	value="<%=board.getBoard_id()%>">
+    <input type="text" 		name="title" 			value="<%=board.getTitle()%>">
+    <input type="text" 		name="writer" 		value="<%=board.getWriter()%>">
+    <textarea 					name="content" 	style="height:200px"><%=board.getContent() %></textarea>
 
     <input type="button" value="수정" id="bt_edit">
     <input type="button" value="삭제" id="bt_del">
