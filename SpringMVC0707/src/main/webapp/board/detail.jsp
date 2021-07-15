@@ -1,4 +1,4 @@
-<%@page import="com.koreait.springmvc0714.model.domain.Board"%>
+<%@page import="com.koreait.springmvc0715.model.domain.Board"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	Board board=(Board)request.getAttribute("board");//하위 컨트롤러가 심어놓은 객체를 꺼내기!!

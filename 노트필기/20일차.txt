@@ -12,5 +12,8 @@
 
 3.ScrollView는 자식을  Only One Child~~
 
+[ 2개 이상의 화면으로 앱을 개발하자!!]
+화면을 제어하는 액티비티를 알아야 함 
 
 
+/board/list

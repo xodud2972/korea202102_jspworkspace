@@ -33,9 +33,9 @@
 	
 	<bean class="com.koreait.springmvc0714.controller.board.UpdateController" name="updateController" 
 		p:boardService-ref="boardServiceImpl"/>
-	
 	<bean class="com.koreait.springmvc0714.controller.board.DeleteController" name="deleteController"
-		p:boardService-ref="boardServiceImpl"/>
+		></bean>
+
 	
 	<!-- 핸들러 매핑 결정 -->
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" id="handlerMapping" 
@@ -58,8 +58,6 @@
 
 				
 </beans>
-
-
 
 
 

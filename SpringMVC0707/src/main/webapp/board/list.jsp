@@ -1,4 +1,4 @@
-<%@page import="com.koreait.springmvc0714.model.domain.Board"%>
+<%@page import="com.koreait.springmvc0715.model.domain.Board"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
