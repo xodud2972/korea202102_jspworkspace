@@ -1,0 +1,26 @@
+
+[ Spring ]
+1.설정파일의 간소화 , 따라서 적극적으로 @ Annotation을 적극활용!!
+ weaving  문제-->  @Autowired  : 자동 DI 
+
+요청을 받는 컨트롤러를 2개이상 두었을때, Spring의 컨테이어인 ApplicationContext 도 
+각 서블릿 컨트롤러마다 존재하게 된다..
+
+2.Persistence 영역까지도 스프링이 지원
+   따라서 dB연동도 스프링을 이용 
+   장점: 트랜잭션 처리를 자동화!! 
+   
+  주의)  mybatis는 스프링팀에서 지원하지 않았기 때문에, mybatis팀이 스프링지원  jar제작 
+          mybatis-spring 
+          
+	  mybatis					mybatis-spring
+	  SqlSessionFactory  -->   SqlSessionFactoryBean
+	  sqlSession             -->   SqlSessionTemplate
+
+
+
+
+
+
+
+
