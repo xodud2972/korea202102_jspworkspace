@@ -160,7 +160,7 @@
       </Realm>
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
-
+	
         <!-- SingleSignOn valve, share authentication between web applications
              Documentation at: /docs/config/valve.html -->
         <!--
@@ -172,7 +172,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="Springvdb" path="/springdb" reloadable="true" source="org.eclipse.jst.jee.server:Springvdb"/></Host>
+      <Context docBase="Springdb" path="/" reloadable="true" source="org.eclipse.jst.jee.server:Springdb"/></Host>
     </Engine>
   </Service>
 </Server>
