@@ -9,12 +9,14 @@
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
+
 .input-container {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   width: 100%;
   margin-bottom: 15px;
 }
+
 .icon {
   padding: 10px;
   background: dodgerblue;
@@ -22,14 +24,17 @@ body {font-family: Arial, Helvetica, sans-serif;}
   min-width: 50px;
   text-align: center;
 }
+
 .input-field {
   width: 100%;
   padding: 10px;
   outline: none;
 }
+
 .input-field:focus {
   border: 2px solid dodgerblue;
 }
+
 /* Set a style for the submit button */
 .btn {
   background-color: dodgerblue;
@@ -40,6 +45,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   width: 100%;
   opacity: 0.9;
 }
+
 .btn:hover {
   opacity: 1;
 }
@@ -47,10 +53,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(function(){
-	$("input[type='button']").click(function(){
+	$("button[type='button']").click(function(){
 		loginCheck();
 	});
 });
+
 function loginCheck(){
 	//서버에 로그인 요청 
 	$("form").attr({
@@ -59,6 +66,7 @@ function loginCheck(){
 	});		
 	$("form").submit();
 }
+
 </script>
 </head>
 <body>
