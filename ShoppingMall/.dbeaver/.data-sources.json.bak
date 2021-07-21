@@ -1,7 +1,7 @@
 {
 	"folders": {},
 	"connections": {
-		"mysql8-17abddf4abb-f1164025bc45a53": {
+		"mysql8-17ac2fc51c5-381893c7f138571f": {
 			"provider": "mysql",
 			"driver": "mysql8",
 			"name": "shopping",
@@ -12,7 +12,24 @@
 				"port": "3306",
 				"database": "shopping",
 				"url": "jdbc:mysql://localhost:3306/shopping",
-				"home": "C:\\Program Files\\MySQL\\MySQL Server 5.7",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		},
+		"mysql8-17ac2fc9b9b-42bf658126924532": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "shopping 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "shopping",
+				"url": "jdbc:mysql://localhost:3306/shopping",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
 				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
