@@ -47,9 +47,27 @@ function getSubList(topcategory_id){
 		url:"/admin/category/topdetail?topcategory_id="+topcategory_id,
 		type:"GET",
 		success:function(result, status, xhr){
-			alert(result);
+			//alert(result.length);
+			printSubArea(result); //json을 매개변수로 전달하자!!
 		}
 	});
+}
+
+function printSubArea(jsonArray){
+	$("#sub_area").html(""); //먼저싹~~지우고
+	
+	var tag="";
+	
+	for(var i=0;i<jsonArray.length;i++){
+		var json=jsonArray[i];
+		tag+="<tr>";	
+		tag+="<td>"+json.subcategory_id+"</td>";
+		tag+="<td>"+json.topcategory_id+"</td>";
+		tag+="<td>"+json.sub_name+"</td>";
+		tag+="</tr>";
+	}
+	
+	$("#sub_area").append(tag);
 }
  </script>
   
@@ -130,6 +148,22 @@ function getSubList(topcategory_id){
                   </tbody>
                 </table>
               </div>
+              
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>subcategory_id</th>
+                      <th>topcategory_id</th>
+                      <th>하위카테고리명</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sub_area">
+                    
+                  </tbody>
+                </table>
+              </div>
+              
               <!-- /.card-body -->
             </div>
             <!-- /.card -->

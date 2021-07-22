@@ -67,7 +67,7 @@
           </li>
           <li class="nav-item menu-open">
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 회원관리
@@ -97,7 +97,7 @@
           </li>
           <li class="nav-item menu-open">
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 주문관리
@@ -127,7 +127,7 @@
           </li>
           <li class="nav-item menu-open">
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 고객센터
