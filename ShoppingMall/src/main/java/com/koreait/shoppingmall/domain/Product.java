@@ -13,5 +13,6 @@ public class Product {
 	private int price;
 	private String info;
 	MultipartFile photo;
+	private String product_img;
 	
 }

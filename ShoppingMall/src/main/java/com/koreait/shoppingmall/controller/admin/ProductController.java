@@ -17,6 +17,7 @@ import com.koreait.shoppingmall.domain.Product;
 import com.koreait.shoppingmall.exception.UploadException;
 import com.koreait.shoppingmall.model.common.file.FileManager;
 import com.koreait.shoppingmall.model.service.category.TopCategoryService;
+import com.koreait.shoppingmall.model.service.product.ProductService;
 
 //상품관련 요청을 처리하는 하위 컨트롤러
 @Controller
@@ -26,6 +27,9 @@ public class ProductController {
 	
 	@Autowired
 	private FileManager fileManager;
+	
+	@Autowired
+	private ProductService productService;
 	
 	//상품 등록폼 요청처리 
 	@GetMapping("/product/registform")
@@ -47,15 +51,45 @@ public class ProductController {
 		//원하는대로 제어하면 된다..
 		MultipartFile photo=product.getPhoto();
 		ServletContext context = request.getServletContext();
-		String realPath=context.getRealPath("/resources/data");
 		long time=System.currentTimeMillis();
 		
-		
+		//서비스.regist();
 		//원하는 위치에 파일 저장하기
-		fileManager.saveFile(realPath+"/"+time+"."+fileManager.getExt(photo.getOriginalFilename()) , photo);
+		String filename=time+"."+fileManager.getExt(photo.getOriginalFilename());
 		
-		return null;
+		fileManager.saveFile(context,filename , photo);
+		product.setProduct_img(filename); //insert 직전에 파일명 결정짓기
+		productService.regist(product);
+		
+		return "redirect:/admin/product/list"; //상품 목록페이지를 재요청
 	}
+	
+	//모든 상품 가져오기 
+	@GetMapping("/product/list")
+	public String getList(Model model) {
+		//3단계: 일시키기
+		List productList = productService.selectAll();
+		
+		//4단계:저장
+		model.addAttribute("productList", productList);
+		
+		return "admin/product/product_list";
+	}
+	
+	//상품 상세보기 요청 
+	@GetMapping("/product/detail")
+	public String getDetail(int product_id, Model model) {
+		//3단계:
+		Product product = productService.select(product_id);
+		List topList=topCategoryService.selectAll();
+		
+		//4단계: 
+		model.addAttribute("product", product);
+		model.addAttribute("topList", topList);
+		
+		return "admin/product/content";
+	}
+	
 	
 	@ExceptionHandler(UploadException.class)
 	public String handleException(UploadException e, Model model) {
