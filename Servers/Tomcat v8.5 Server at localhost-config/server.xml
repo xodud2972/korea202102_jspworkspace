@@ -53,7 +53,7 @@
 	 -->  	
 	 
 	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="3000" name="jndi/oracle" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:XE" username="webmaster"/> 
-	<Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="3000" name="jndi/mysql" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/shopping?characterEncoding=UTF-8" username="root"/> 
+	<Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="3000" name="jndi/mysql" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/meeting?characterEncoding=UTF-8" username="root"/> 
 		 	
   </GlobalNamingResources>
 
@@ -171,7 +171,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="ShoppingMall" path="/ShoppingMall" reloadable="true" source="org.eclipse.jst.jee.server:ShoppingMall"/><Context docBase="meeting" path="/" reloadable="true" source="org.eclipse.jst.jee.server:meeting"/></Host>
+      <Context docBase="meeting" path="/" reloadable="true" source="org.eclipse.jst.jee.server:meeting"/></Host>
     </Engine>
   </Service>
 </Server>
