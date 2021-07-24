@@ -14,14 +14,29 @@
 				"url": "jdbc:mysql://localhost:3306/shopping",
 				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
 				"type": "dev",
-				"auth-model": "native",
-				"handlers": {}
+				"auth-model": "native"
 			}
 		},
 		"mysql8-17ac2fc9b9b-42bf658126924532": {
 			"provider": "mysql",
 			"driver": "mysql8",
 			"name": "shopping 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "shopping",
+				"url": "jdbc:mysql://localhost:3306/shopping",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-17ac8049489-7d4789e14f850830": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "shopping 3",
 			"save-password": true,
 			"read-only": false,
 			"configuration": {
