@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.koreait.shoppingmall.domain.Product;
+import com.koreait.shoppingmall.exception.FileHandleException;
 import com.koreait.shoppingmall.exception.UploadException;
 import com.koreait.shoppingmall.model.common.file.FileManager;
 import com.koreait.shoppingmall.model.service.category.TopCategoryService;
@@ -90,12 +91,30 @@ public class ProductController {
 		return "admin/product/content";
 	}
 	
+	//상품 삭제요청 처리 
+	@PostMapping("/product/del")
+	public String delete(Product product, HttpServletRequest request){
+		//3단계
+		productService.delete(product.getProduct_id());
+		fileManager.deleteFile(request.getServletContext(), product.getProduct_img());
+		
+		return "redirect:/admin/product/list"; //리스트에 재요청
+	}
+	
+	
 	
 	@ExceptionHandler(UploadException.class)
 	public String handleException(UploadException e, Model model) {
 		model.addAttribute("e", e);//에러 객체 담기 
 		return "error/result";
 	}
+	
+	@ExceptionHandler(FileHandleException.class)
+	public String handleException(FileHandleException e, Model model) {
+		model.addAttribute("e", e);//에러 객체 담기 
+		return "error/result";
+	}
+	
 }
 
 

@@ -1,0 +1,9 @@
+[ 안드로이드 ]
+
+
+
+select t.topcategory_id, top_name, count(subcategory_id)
+from topcategory t left outer join subcategory s
+on t.topcategory_id=s.topcategory_id
+group by t.topcategory_id, top_name
+order by t.topcategory_id asc;

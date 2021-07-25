@@ -36,9 +36,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public void delete(int product_id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(int product_id) throws DMLException{
+		productDAO.delete(product_id);		
 	}
 	
 	
