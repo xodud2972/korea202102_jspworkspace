@@ -1,0 +1,25 @@
+[기존 URL 형식 ]
+- 동사적 표현 
+/board/boardList, list.....
+
+클라이언트 디바이스가 다양 iot 웹서버 restful api 
+[REST 형식 ]
+-명사적 표현 
+                            http method (Get, Post)
+목록:  /board              GET
+상세:  /board/5           GET  5번 레코드 요청 
+등록:  /board              Post 게시물 한건을 등록 요청 
+수정:  /board		Put 수정
+삭제:  /board	       Delete 삭제 
+
+
+[ 폼을 이용한 put, delete 요청시 필터등록 ]
+
+<filter>
+    <filter-name>httpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>httpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
