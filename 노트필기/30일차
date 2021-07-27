@@ -1,0 +1,26 @@
+[ REST ]
+HTTP 의 URL 의 한 형식 
+기존  URL은 데이터에 대한 동사적표현을 사용함..
+개선) 데이터 자체에 대한 표현을 중심으로,  http 전송 method로써 행위를 표현함
+
+목록   /board      GET
+등록   /board      POST
+수정   /board      PUT
+삭제   /board/1    DELETE
+
+[ AOP ]
+
+Login 관련 , 공통로직, 트랜잭션...
+
+
+
+
+
+
+
+
+
+
+
+
+
