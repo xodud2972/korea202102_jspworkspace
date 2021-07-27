@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,16 +40,33 @@ public class BoardController {
 	
 	//글등록 
 	@PostMapping("/board")
+	@ResponseBody
 	public String regist(@RequestBody Board board) { //json 과의 매핑 때문에..
 		boardService.insert(board);
+		System.out.println("등록 요청이 들어왔어요");
 		return "ok";
 	}  
 	
-	//글수정
+	@PutMapping("/board")
+	@ResponseBody
+	public String update(@RequestBody Board board) {
+		System.out.println("수정 요청이 들어왔어요");
+		boardService.update(board);
+		return "ok";
+	}
 	
-	//글삭제
+	
+	//글삭제	
+	@DeleteMapping("/board/{board_id}")
+	@ResponseBody
+	public String delete( @PathVariable int board_id) {
+		boardService.delete(board_id);
+		return "ok";
+	}
+	
 	
 	@ExceptionHandler(DMLException.class)
+	@ResponseBody
 	public String handle(DMLException e) {
 		return e.getMessage();
 	}
