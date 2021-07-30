@@ -11,6 +11,10 @@
 		select * from product order by product_id desc
 	</select>	
 	
+	<!-- 하위 카테고리에 소속된 상품 목록  -->
+	<select id="selectBySubCategory" parameterType="int" resultType="Product">
+		select * from product where subcategory_id=#{subcategory_id}	
+	</select>
 
 	<!-- 상품상세 정보-->
 	<!-- 자동매핑에 의존하지 못할 경우, 개발자가 매핑을 수동으로 조절해야 될 경우가 있다..이때 사용하는 태그가 resultMap -->
@@ -37,6 +41,8 @@
 	<delete id="delete" parameterType="int">
 		delete from product where product_id=#{product_id}
 	</delete>
+	
+	
 	
 </mapper>
 

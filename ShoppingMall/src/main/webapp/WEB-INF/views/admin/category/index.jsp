@@ -1,8 +1,8 @@
-<%@page import="com.koreait.shoppingmall.domain.TopCategoryCount"%>
+<%@page import="com.koreait.shoppingmall.domain.TopCategory"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
-	List<TopCategoryCount> topList=(List)request.getAttribute("topList");
+	List<TopCategory> topList=(List)request.getAttribute("topList");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,7 +139,7 @@ function printSubArea(jsonArray){
                     </tr>
                   </thead>
                   <tbody>
-                  	<%for(TopCategoryCount obj:topList){%>
+                  	<%for(TopCategory obj:topList){%>
                     <tr onClick="getSubList(<%=obj.getTopcategory_id()%>)">
                       <td><%=obj.getTop_name() %></td>
                       <td><%=obj.getCnt() %></td>
@@ -224,8 +224,6 @@ function printSubArea(jsonArray){
 <script src="/resources/admin/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/admin/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/resources/admin/dist/js/pages/dashboard.js"></script>
 
 <!-- simple 테이블 관련 링크  -->
 <!-- jQuery -->

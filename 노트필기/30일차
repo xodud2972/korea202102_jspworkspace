@@ -9,12 +9,22 @@ HTTP 의 URL 의 한 형식
 삭제   /board/1    DELETE
 
 [ AOP ]
-
 Login 관련 , 공통로직, 트랜잭션...
 
+Spring을 지배하는 개발원리
+ - DI 
+ - AOP 
+    기초
+    응용 
 
 
 
+
+   목록
+   수정
+   삭제
+   상세 
+  등록
 
 
 

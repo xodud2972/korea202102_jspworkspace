@@ -188,8 +188,8 @@
 <script src="/resources/admin/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/admin/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/resources/admin/dist/js/pages/dashboard.js"></script>
+
+
 
 <!-- simple 테이블 관련 링크  -->
 <!-- jQuery -->

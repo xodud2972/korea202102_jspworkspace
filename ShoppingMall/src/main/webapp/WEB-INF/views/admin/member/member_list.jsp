@@ -1,6 +1,12 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%
+	if(session.getAttribute("admin")==null){
+		out.print("<script>");
+		out.print("alert('로그인이 필요한 서비스입니다');");
+		out.print("history.back();");
+		out.print("</script>");
+	}
 	//List<Product> productList=(List)request.getAttribute("productList");
 %>
 <!DOCTYPE html>
@@ -64,7 +70,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">주문 목록</h1>
+            <h1 class="m-0">회원 목록</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -187,8 +193,6 @@
 <script src="/resources/admin/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/resources/admin/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/resources/admin/dist/js/pages/dashboard.js"></script>
 
 <!-- simple 테이블 관련 링크  -->
 <!-- jQuery -->
