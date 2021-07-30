@@ -10,4 +10,5 @@ public interface ProductService {
 	public void regist(Product product);
 	public void update(Product product);
 	public void delete(int product_id);
+	public List selectBySubCategory(int subcategory_id);
 }

@@ -45,5 +45,9 @@ public class MybatisProductDAO implements ProductDAO{
 			throw new DMLException("상품 삭제에 실패하였습니다");
 		}		
 	}
+	@Override
+	public List selectBySubCategory(int subcategory_id) {
+		return sqlSessionTemplate.selectList("Product.selectBySubCategory", subcategory_id);
+	}
 
 }
