@@ -46,6 +46,22 @@
 				"url": "jdbc:mysql://localhost:3306/shopping",
 				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
 				"type": "dev",
+				"auth-model": "native"
+			}
+		},
+		"mysql8-17ad3d80f6b-3b047999ce13dad0": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "meeting",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "meeting",
+				"url": "jdbc:mysql://localhost:3306/meeting",
+				"home": "C:\\Program Files\\MySQL\\MySQL Router 8.0",
+				"type": "dev",
 				"auth-model": "native",
 				"handlers": {}
 			}

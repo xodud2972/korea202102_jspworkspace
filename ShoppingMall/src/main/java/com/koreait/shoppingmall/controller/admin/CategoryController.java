@@ -2,6 +2,8 @@ package com.koreait.shoppingmall.controller.admin;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ public class CategoryController {
 	
 	//카테고리 목록 
 	@RequestMapping(value="/category/list", method=RequestMethod.GET)
-	public String getCategoryList(Model model) {
+	public String getCategoryList(Model model,HttpServletRequest request) {
 		System.out.println("getCategoryList 호출");
 		
 		//3단계: 일 시키기
@@ -41,7 +43,7 @@ public class CategoryController {
 	//상위 카테고리의 상세내역 요청 처리 
 	@RequestMapping(value="/category/topdetail", method=RequestMethod.GET)
 	@ResponseBody
-	public List<SubCategory> getTopDetail(int topcategory_id, Model model) {
+	public List<SubCategory> getTopDetail(int topcategory_id, Model model,HttpServletRequest request) {
 		//3단계: 일시키기 
 		List subList=subCategoryService.selectAllById(topcategory_id);
 		

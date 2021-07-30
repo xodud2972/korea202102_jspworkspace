@@ -43,6 +43,39 @@ create table board(
 ) default character set utf8;
 
 
+-- 회원 테이블 
+create table member(
+	member_id int primary key auto_increment
+	, user_id varchar(20)
+	, pass varchar(20)
+	, name varchar(20)
+	, phone varchar(13) 
+) default character set utf8;
+
+
+--장바구니 
+create table cart(
+	cart_id  int primary key auto_increment 
+	, product_id int
+	, member_id int 
+	, ea int default 0
+	, constraint fk_product_cart  foreign key (product_id) references product(product_id)
+	, constraint fk_member_cart  foreign key (member_id) references member(member_id)
+) default character set utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
