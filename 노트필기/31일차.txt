@@ -1,0 +1,29 @@
+[ AOP 기반 로그인 처리 ]
+
+
+[ Constraint Layout ] 
+제약이 있는 레이아웃 
+ViewGroup 중 배치능력이 있는 뷰그룹을  Layout이라 함 
+- LinearLayout 
+- FrameLayout 
+- GridLayout 
+- TableLayout
+- RelativeLayout 
+
+기존 레이아웃들의 문제점 
+디자인이 복잡할 수록, 레이아웃의 중첩이 더더욱 복잡해짐..
+예)  
+
+[ 저장소 ] 
+내부저장소 ( Internal Storage)
+외부저장소 ( External Storage)
+
+[권한]
+
+
+
+
+
+
+
+

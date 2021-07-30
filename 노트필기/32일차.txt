@@ -1,0 +1,21 @@
+어제 배운것 
+저장소 - 내부(나의 앱만 접근가능),외부(다른앱, 사용자)
+	- 외부의 경우엔 권한이 필요 EXTERNAL_STORAGE   dangerous
+마시멜로 버전 부터 권한 정책 바뀜
+mybatis : 
+association - 자식과 부모 1:1 관계     자식의 VO에서 부모의 VO 보유
+collection - 부모와 자식이 1:多 관계    부모의VO에서 자식을 Collection형보유
+
+금일 배울것
+[ 안드로이드 에니메이션 ]
+안드로이드 자체적으로 (res/anim)xml 설정을 파일을 이용한 에니메이션 지원 
+-종류
+	1.이동(Translate)
+	2.크기(Scale) 
+	3.회전(Rotate)
+	4.투명도(Alpha)
+-적용대상 
+	1.모든 View(버튼, 텍스트뷰...)
+	2.모든 Drawable(그려질 대상)
+
+[ 만화 느낌의 에니메이션 ]
