@@ -1,0 +1,176 @@
+body {
+  font-family: Arial;
+  font-size: 11px;
+  padding: 100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#container {
+  display: flex;
+}
+
+/*이미지 시작*/
+.picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 400px;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+.picture_row {
+  display: grid;
+  width: 100%;
+
+  margin-bottom: 4px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.picture_row:empty {
+  display: block;
+  position: relative;
+}
+.picture_row:empty::before {
+  content: "4장의 이미지를 등록해주세요.";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 97px;
+  background: #f5f5f5;
+  text-align: center;
+  line-height: 97px;
+}
+
+/* Style the images inside the grid */
+.picture_row > img {
+  opacity: 0.8;
+  cursor: pointer;
+  width: 97px;
+  height: 97px;
+}
+
+.picture_column img:hover {
+  opacity: 1;
+}
+
+/* The expanding image container */
+.picture_swiper {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  right: 30px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+#expandedImg {
+  position: relative;
+  width: 100%;
+}
+
+/* 폼 테이블 */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+  position: relative;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.base_container {
+  background-color: #eff5f5;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-top: 7px;
+  margin-bottom: 1px;
+  display: block;
+}
+
+input[type="button"] {
+  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-left: 15px;
+}
+
+input[type="button"]:hover {
+  background: linearrgb(128, 255, 255) nt(45deg, #1de099, #1dc8cd);
+}
+
+a {
+  color: #2196f3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+span.price {
+  float: right;
+  color: rgb(128, 128, 128);
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}

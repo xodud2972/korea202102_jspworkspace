@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProFile">
+
+
+	<insert id="insert" parameterType="ProFile">
+		insert into profile(sign_id, nickname, age, sex, height, introduce, weight, job, area, interest, mbti, filename)
+		values(#{sign_id},#{nickname},#{age},#{sex},#{height},#{introduce},#{weight},#{job},#{area},#{interest},#{mbti},#{filename})
+	</insert>	
+	
+	<select id="selectAll" resultType="ProFile">
+		select * from profile order by profile_id desc
+	</select>
+	
+	<!-- 로그인된 회원 목록 --> 
+	<select id="selectByAdmin" parameterType="int" resultType="ProFile">
+		select * from profile where sign_id=#{sign_id}	
+	</select>
+	
+	
+ 
+	<!-- 프로필 상세정보-->
+	<resultMap type="ProFile" id="ProFileAdmin">
+		<id column="profile_id"				property="profile_id"/>
+		<result column="sign_id"			property="sign_id"/>
+		<result column="nickname"		property="nickname"/>
+		<result column="age"				property="age"/>
+		<result column="sex"					property="sex"/>
+		<result column="height"			property="height"/>
+		<result column="introduce"		property="introduce"/>
+		<result column="weight"			property="weight"/>
+		<result column="job"					property="job"/>
+		<result column="area"				property="area"/>
+		<result column="interest"			property="interest"/>
+		<result column="mbti"				property="mbti"/>
+		<result column="filename"			property="filename"/>
+		
+		<association column="sign_id"	property="admin" javaType="Admin"
+			select="Admin.select"/>	
+	</resultMap>
+ 
+	
+	<!-- 아래의 쿼리는 Profile에 대해서만 매핑이 일어나므로, signup에 대한 매핑을 위해서는 개발자가 직접 명시해야 한다 -->
+	<select id="select" parameterType="int" resultMap="ProFileAdmin">
+		select s.sign_id as sign_id , user
+		, profile_id, nickname, age, sex, height, introduce
+		, weight, job, area, interest, mbti, filename
+		from signup s, profile p 
+		where s.sign_id  = p.sign_id 
+		and profile_id=#{profile_id}		
+	</select>
+	
+	<!-- 프로필 수정하기 -->
+	<update id="update" parameterType="ProFile">
+		 update profile set nickname=#{nickname}, age=#{age}, sex=#{sex}
+		, height=#{height},introduce=#{introduce},weight=#{weight},job=#{job},area=#{area},interest=#{interest}
+		, mbti=#{mbti}, filename=#{filename}
+		 where profile_id=#{profile_id}
+	</update>
+	
+	<!-- 프로필 삭제하기 -->
+	<delete id="delete" parameterType="int">
+		delete from profile where profile_id=#{profile_id}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+

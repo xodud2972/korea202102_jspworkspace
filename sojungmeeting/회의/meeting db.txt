@@ -1,0 +1,42 @@
+create table signup(
+ sign_id int primary key auto_increment
+, user varchar(20)
+, password varchar(20)
+, email varchar(20)
+) default  character set utf8;
+
+create table profile(
+ profile_id int primary key auto_increment
+, sign_id int
+, nickname varchar(20)
+, age varchar(20)
+, job varchar(20)
+, area varchar(20)
+, height varchar(20)
+, weight varchar(20)
+, interest varchar(20)
+, star varchar(20)
+, introduce text
+, filename varchar(40)
+, mbti varchar(20)
+, sex varchar(20)
+, constraint fk_signpro foreign key (sign_id)
+ references signup(sign_id)
+) default  character set utf8;
+
+<!--넣을지 말지 몰겠음
+create table size_info(
+    size_info_id  int  primary key auto_increment
+  , profile_id int 
+  , size varchar(10)
+  , constraint fk_productsize foreign key(product_id) 
+    references product(product_id)
+) default  character set utf8;
+-->
+
+create table picture(
+picture_id int primary key auto_increment
+, profile id int
+, img_name varchar(40)
+, constraint fk_pictureimg foreign key(profile_id) references profile(profile_id)
+);

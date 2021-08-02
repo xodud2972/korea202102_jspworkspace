@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Payment">
+
+	<!-- 결제 1건 담기 -->
+	<insert id="insert" parameterType="Payment">
+		insert into payment(profile_id, c_name, c_card, c_num, c_email, c_month, c_year, c_owner, c_ccc, c_cardtype, c_pull, c_bank, c_account)
+		values(#{profile_id},#{c_name},#{c_card},#{c_num},#{c_email},#{c_month},#{c_year},#{c_owner},#{c_ccc},#{c_cardtype},#{c_pull},#{c_bank}, #{c_account})
+	</insert>	
+	
+	
+	<!-- 해당 회원의 결제목록 가져오기  -->
+
+	<select id="selectAll" resultType="Payment">
+		select * from payment order by payment_id desc
+	</select>
+
+
+	<!-- 로그인된 회원 목록 --> 
+	<select id="selectByProfile" parameterType="int" resultType="Payment">
+		select * from payment where payment_id=#{payment_id}	
+	</select>
+	
+	
+ 
+	<!-- 결제 상세정보 -->
+	<resultMap type="Payment" id="PaymentProFile">
+		<id column="payment_id"				property="payment_id"/>
+		<result column="c_name"				property="c_name"/>
+		<result column="c_card"				property="c_card"/>
+		<result column="c_num"				property="c_num"/>
+		<result column="c_email"				property="c_email"/>
+		<result column="c_month"				property="c_month"/>
+		<result column="c_year"				property="c_year"/>
+		<result column="c_owner"				property="c_owner"/>
+		<result column="c_ccc"					property="c_ccc"/>
+		<result column="c_cardtype"			property="c_cardtype"/>
+		<result column="c_pull"					property="c_pull"/>
+		<result column="c_bank"				property="c_bank"/>
+		<result column="c_account"			property="c_account"/>
+		
+		<association column="profile_id"		property="profile"  javaType="ProFile"
+			select="ProFile.select"/>	
+	</resultMap>
+
+	
+	<!-- 아래의 쿼리는 Payment에 대해서만 매핑이 일어나므로, profile에 대한 매핑을 위해서는 개발자가 직접 명시해야 한다 -->
+<!--
+	<select id="select" parameterType="int" resultMap="PaymentProFile">
+		select p.profile_id as profile_id , user
+		, payment_id, c_name, c_card, c_num, c_email, c_month
+		, c_year, c_owner, c_ccc, c_cardtype, c_pull, c_bank, c_account
+		from profile p, payment m 
+		where p.profile_id  = m.profile_id 
+		and payment_id=#{payment_id}		
+	</select> -->
+
+</mapper>
+
+
+
+
+
+
+
+
+
