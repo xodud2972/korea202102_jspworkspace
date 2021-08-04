@@ -40,7 +40,26 @@
 			<aop:around method="sound" pointcut-ref="bellPointcut"/>
 		</aop:aspect>
 	</aop:config>	
+	
+	<!-- TopCateogryAspect 객체를 Aspect로 설정하고, 쇼핑몰의 카테고리가 출력되어야 할 모든~~페이지에 관여해보자 -->
+	<beans:bean id="topCategoryAspect" class="com.koreait.shoppingmall.aop.client.TopCategoryAspect"/>
+	<aop:config>
+		<aop:aspect id="categoryAspect" ref="topCategoryAspect">
+			<aop:pointcut expression="execution(public * com.koreait.shoppingmall.controller.client..*(..))" id="categoryPointcut"/>
+			<aop:around method="getList" pointcut-ref="categoryPointcut"/>
+		</aop:aspect>		
+	</aop:config>
+	
+	
 </beans:beans>
+
+
+
+
+
+
+
+
 
 
 

@@ -64,8 +64,57 @@ create table cart(
 ) default character set utf8;
 
 
+-----------------------------------------------------------------------------------------------------
+
+create table paymethod(
+	paymethod_id int primary key auto_increment 
+	, name varchar(25)
+) default character set utf8;
+
+insert into paymethod(name) values('신용카드');
+insert into paymethod(name) values('핸드폰');
+insert into paymethod(name) values('계좌이체');
 
 
+--주문 요약 테이블 
+create table order_summary(
+	order_summary_id int primary key auto_increment 
+	, member_id int 
+	, order_date timestamp default now()
+	, total_buy int  default 0
+	, total_pay int default 0
+	, paymethod_id int 
+	, constraint fk_member_order_summary foreign key(member_id) references member(member_id)
+	, constraint fk_paymethod_order_summary foreign key(paymethod_id) references paymethod(paymethod_id)
+) default character set utf8;
+
+
+--주문 상세 테이블
+create table order_detail(
+	 order_detail_id int primary key auto_increment
+	, order_summary_id int  
+	, product_id int 
+	, ea int default 0  
+	, price int default 0
+	, constraint fk_order_summery_order_detail foreign key(order_summary_id) references order_summary(order_summary_id)
+	, constraint fk_product_order_detail foreign key(product_id) references product(product_id) 
+) default character set utf8;
+
+
+
+--배송지정보 ( 추후, 배송지정보를 바꿀 경우, 주문완료에 입력된 주소가 영향을 받으면 안됨) 
+create table receiver(
+	  receiver_id int primary key auto_increment
+	, order_summary_id int  
+	, name varchar(30)
+	, addr1 varchar(100)
+	, addr2 varchar(50) 
+	, zipcode varchar(5)
+	, phone1 varchar(3) 
+	, phone2 varchar(4)
+	, phone3 varchar(4)  
+	, constraint fk_order_summery_receiver foreign key(order_summary_id) references order_summary(order_summary_id)  
+) default character set utf8;
 
 
 

@@ -30,7 +30,7 @@ public class MybatisCartDAO implements CartDAO{
 
 	@Override
 	public List selectAllJoin(int member_id) {
-		return sqlSessionTemplate.selectList("Cart.selectAll", member_id);
+		return sqlSessionTemplate.selectList("Cart.selectAllJoin", member_id);
 	}
 
 	@Override

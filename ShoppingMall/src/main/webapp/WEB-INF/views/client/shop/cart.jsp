@@ -1,6 +1,13 @@
+<%@page import="com.koreait.shoppingmall.domain.Cart"%>
+<%@page import="com.koreait.shoppingmall.domain.TopCategory"%>
+<%@page import="java.util.List"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%
+	List<TopCategory> topList=(List)request.getAttribute("topList");
+	List<Cart> cartList=(List)request.getAttribute("cartList"); //장바구니와 상품 정보가 조인되어 온 결과	
+%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -15,11 +22,11 @@
     <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/resources/client/css/core-style.css">
+    <link rel="stylesheet" href="/resources/client/style.css">
 
     <!-- Responsive CSS -->
-    <link href="css/responsive.css" rel="stylesheet">
+    <link href="/resources/client/css/responsive.css" rel="stylesheet">
 
 </head>
 
@@ -51,21 +58,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	<%for(int i=0;i<cartList.size();i++){ %>
+                                	<%Cart cart = cartList.get(i); %>
                                     <tr>
                                         <td class="cart_product_img d-flex align-items-center">
-                                            <a href="#"><img src="img/product-img/product-9.jpg" alt="Product"></a>
-                                            <h6>Yellow Cocktail Dress</h6>
+                                            <a href="#"><img src="/resources/data/<%=cart.getProduct().getProduct_img() %>" alt="Product"></a>
+                                            <h6><%=cart.getProduct().getProduct_name() %></h6>
                                         </td>
-                                        <td class="price"><span>$49.88</span></td>
+                                        <td class="price"><span><%=cart.getProduct().getPrice() %></span></td>
+                                        
                                         <td class="qty">
                                             <div class="quantity">
                                                 <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="1">
+                                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="<%=cart.getEa()%>">
                                                 <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                             </div>
                                         </td>
-                                        <td class="total_price"><span>$49.88</span></td>
+                                        <td class="total_price"><span><%=cart.getProduct().getPrice()*cart.getEa() %></span></td>
                                     </tr>
+                                    <%} %>
                                 </tbody>
                             </table>
                         </div>
@@ -131,7 +142,7 @@
                                 <li><span>Shipping</span> <span>Free</span></li>
                                 <li><span><strong>Total</strong></span> <span><strong>$59.90</strong></span></li>
                             </ul>
-                            <a href="checkout.html" class="btn karl-checkout-btn">Proceed to checkout</a>
+                            <a href="/client/checkout/form" class="btn karl-checkout-btn">Proceed to checkout</a>
                         </div>
                     </div>
                 </div>
@@ -146,15 +157,15 @@
     <!-- /.wrapper end -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/resources/client/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="/resources/client/js/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/resources/client/js/bootstrap.min.js"></script>
     <!-- Plugins js -->
-    <script src="js/plugins.js"></script>
+    <script src="/resources/client/js/plugins.js"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="/resources/client/js/active.js"></script>
 
 </body>
 
